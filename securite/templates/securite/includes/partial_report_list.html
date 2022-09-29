@@ -1,0 +1,60 @@
+{% load static %}
+{% for notify in employees %}
+
+  <tr>  <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm"><center>{{ notify.emp_id}}</center></span>
+        </div>
+      </div>
+    </td>
+
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm"><center>{{ notify.emp_name}}</center></span>
+        </div>
+      </div>
+    </td>
+
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm"><center>{{ notify.email }}</center></span>
+        </div>
+      </div>
+    </td>
+
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm"><center>{{ notify.designation }}</center></span>
+        </div>
+      </div>
+    </td>
+
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm"><center>{{ notify.phone }}</center></span>
+        </div>
+      </div>
+    </td>
+
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm"><center><a href="{% url 'securite:member_detail'  notify.id %}"">Details</a></center></span>
+        </div>
+      </div>
+    </td>
+
+  </tr>
+  {% empty %}
+    <tr>
+      <td colspan="10" class="text-center ">No notification</td>
+    </tr>
+
+
+
+{% endfor %}

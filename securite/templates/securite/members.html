@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block javascript %}
+  <script src="{% static 'member/js/employee.js' %}"></script>
+  <script src="{% static 'member/js/employeeface.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<!-- <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#modal-form">Form</button> -->
+
+<div class="container-fluid mt--7">
+      <!-- Table -->
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header border-0" >
+              <h3 class="mb-0">Employees
+              </h3>
+            </div>
+
+
+
+            <div class="table-responsive" >
+              <table class="table align-items-center table-flush" id="datatable-buttons">
+               <thead class="thead-light">
+                <tr>
+                    <th scope="col" style="color: #006699;">EmpId</th>
+                    <th scope="col" style="color: #006699;">Name</th>
+                    <th scope="col" style="color: #006699;">Designation</th>
+                    <th scope="col" style="color: #006699;">Email</th>
+                    <th scope="col" style="color: #006699;">Phone</th>
+                    <th scope="col" style="color: #006699;">Gender</th>
+                    <th scope="col" style="color: #006699;">Images</th>
+                    <th scope="col" style="color: #006699;" class="text-right"><button type="button" class="btn btn-primary js-create-employee" data-url="{% url 'securite:employee_create' %}"><i class="ni ni-fat-add"></i>
+              </button></th>
+                    <th scope="col" style="color: #006699;"></th>
+
+                </tr>
+              </thead>
+                <tbody>
+                 {% include 'securite/includes/partial_employee_list.html' %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+       </div>
+  </div>
+
+<!--
+  <table class="table" id="employee-table">
+    <thead>
+      <tr>
+
+        <th>ID</th>
+        <th>Name</th>
+        <th>Designation</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Gender</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table> -->
+
+  <div class="modal fade" id="modal-employee">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

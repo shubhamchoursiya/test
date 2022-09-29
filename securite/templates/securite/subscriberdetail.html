@@ -1,0 +1,61 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block javascript %}
+  <script src="{% static 'member/js/subscriber.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header">
+          <h3 class="mb-0">Subscriber Details</h3>
+
+        </div>
+        <div class="table-responsive py-4">
+          <table class="table table-flush" id="datatable-buttons">
+            <thead class="thead-light">
+              <tr>
+                <th><center>User</center></th>
+                <th><center>Subscriber</center></th>
+                <th><center>Delete</center></th>
+
+
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th><center>User</center></th>
+                <th><center>Subscriber</center></th>
+                <th><center>Delete</center></th>
+
+
+              </tr>
+            </tfoot>
+            <tbody>
+               {% include 'securite/includes/partial_subscriber_list.html' %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="modal fade" id="modal-subscriber">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% endblock %}

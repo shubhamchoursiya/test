@@ -1,0 +1,48 @@
+{% load static %}
+{% for notify in notifications %}
+
+  <tr>
+
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm"><center>{{ notify.Category }}</center></span>
+        </div>
+      </div>
+    </td>
+
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm"><center>{{ notify.CameraName }}</center></span>
+        </div>
+      </div>
+    </td>
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm"><center>{{ notify.ImageURL }}</center></span>
+        </div>
+      </div>
+    </td>
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm"><center>{{ notify.Time }}</center></span>
+        </div>
+      </div>
+     </td>
+
+
+    <td class="text-right">
+      <!-- <a  class="js-delete-notification" href="{% url 'securite:notification_delete' notify.id %}">Delete</a> -->
+
+  <button type="button" class=" btn btn-outline-danger js-delete-notification" data-url="{% url 'securite:notification_delete' notify.id %}">Delete</button>
+   </td>
+
+  </tr>
+{% empty %}
+  <tr>
+    <td colspan="10" class="text-center ">No notification</td>
+  </tr>
+{% endfor %}

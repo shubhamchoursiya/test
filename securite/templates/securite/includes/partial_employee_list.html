@@ -1,0 +1,95 @@
+{% load static %}
+{% for employee in employees %}
+
+  <tr>
+
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm">{{ employee.emp_id }}</span>
+        </div>
+      </div>
+    </td>
+
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm">{{ employee.emp_name }}</span>
+        </div>
+      </div>
+    </td>
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm">{{ employee.designation }}</span>
+        </div>
+      </div>
+    </td>
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm">{{ employee.email }}</span>
+        </div>
+      </div>
+    </td>
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm">{{ employee.phone }}</span>
+        </div>
+      </div>
+    </td>
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm">{{ employee.gender }}</span>
+        </div>
+      </div>
+    </td>
+
+                    <td>
+                      <div class="avatar-group">
+                        {% for employeefaceVariable in employeeface %}
+                        {%  if employee.emp_id == employeefaceVariable.emp_id.emp_id %}
+                        <a class="avatar avatar-lg rounded-circle" data-toggle="tooltip" >
+                          <img alt="Image placeholder" src="{{ employeefaceVariable.image.url }}"  >
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                        <a data-url="{% url 'securite:employeeface_create' employee.id %}"   class="avatar avatar-sm js-create-employee"  data-toggle="tooltip" data-original-title="Add Image">
+                          <img alt="Image placeholder" src="{% static 'assets/img/theme/plus.png' %}"  >
+                        </a>
+                      </div>
+                     </td>
+
+    <td class="text-right">
+      <div class="dropdown">
+          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+            <i class="fas fa-ellipsis-v" style="color:#002080;" ></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+              <button type="button" class="dropdown-item  btn-sm js-update-employee" data-url="{% url 'securite:employee_update' employee.id %}" style="color: blue;">Edit</button>
+              <button type="button" class="dropdown-item btn-sm js-delete-employee" data-url="{% url 'securite:employee_delete' employee.id %}" style="color:red;">Delete</button>
+          </div>
+      </div>
+     </td>
+
+
+    <!-- <td style="width: 150px">
+      <button type="button"
+              class="btn btn-warning btn-sm js-update-employee"
+              data-url="{% url 'securite:employee_update' employee.id %}">
+        <span class="glyphicon glyphicon-pencil"></span> Edit
+      </button>
+      <button type="button"
+              class="btn btn-danger btn-sm js-delete-employee"
+              data-url="{% url 'securite:employee_delete' employee.id %}">
+        <span class="glyphicon glyphicon-trash"></span> Delete
+      </button>
+    </td> -->
+  </tr>
+{% empty %}
+  <tr>
+    <td colspan="10" class="text-center ">No employee</td>
+  </tr>
+{% endfor %}

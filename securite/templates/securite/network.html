@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+  {% block content%}
+<div class="row">
+  <div class="col-xl-4">
+    <div class="card">
+      <!-- Card header -->
+      <div class="card-header">
+        <h3 class="mb-0">Create wifi connection</h3>
+      </div>
+      <!-- Card body -->
+      <div class="card-body">
+        <form method="post" >
+          {% csrf_token %}
+          <div class="form-group">
+            <label class="form-control-label" for="exampleFormControlInput1">Wi-Fi Name</label>
+            <input type="text" class="form-control"  name="wifiname" placeholder="wifiname" id="exampleFormControlInput1" placeholder="Your Wi-Fi name">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="exampleFormControlTextarea1">Wi-Fi Password</label>
+            <input type="text" class="form-control" name="wifipassword" placeholder="wifipassword" id="exampleFormControlInput1" placeholder="<Your Wi-Fi password>">
+          </div>
+          <button type="submit" class="btn btn-block btn-info">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-4">
+    <div class="card">
+      <div class="card-header bg-transparent">
+        <div class="row align-items-center">
+          <div class="col">
+            <h6 class="text-uppercase text-muted ls-1 mb-1">{{ mac }}</h6>
+            <h5 class="h3 mb-0">Device ID</h5>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <!-- Chart -->
+
+          {% load qr_code %}
+        <center>  {% qr_from_text mac size="l" %}</center>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-4">
+    <div class="card">
+      <div class="card-header bg-transparent">
+        <div class="row align-items-center">
+          <div class="col">
+            <h6 class="text-uppercase text-muted ls-1 mb-1">{{ ip }}</h6>
+            <h5 class="h3 mb-0">Server IP</h5>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <!-- Chart -->
+
+          {% load qr_code %}
+        <center>  {% qr_from_text ip size="l" %}</center>
+
+
+      </div>
+    </div>
+  </div>
+ </div>
+
+
+  {% endblock%}

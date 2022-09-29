@@ -1,0 +1,89 @@
+
+  {% extends 'base.html'%}
+  {% load static %}
+
+  {% block javascript %}
+    <script src="{% static 'member/js/notification.js' %}"></script>
+
+  {% endblock %}
+
+  {% block content %}
+  {% if user.is_authenticated %}
+
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+          <!-- Card header -->
+          <div class="card-header">
+            <h3 class="mb-0">Notifications</h3>
+
+          </div>
+          <div class="table-responsive py-4">
+            <table class="table table-flush" id="datatable-buttons">
+              <thead class="thead-light">
+                <tr>
+                  <th><center>1</center></th>
+                  <th><center>2</center></th>
+                  <th><center>3</center></th>
+                  <th><center>4</center></th>
+                  <th><center>5</center></th>
+                  <th><center>6</center></th>
+                  <th><center>7</center></th>
+                  <th><center>8</center></th>
+                  <th><center>9</center></th>
+                  <th><center>10</center></th>
+                  <th><center>11</center></th>
+                  <th><center>12</center></th>
+                  <th><center>13</center></th>
+                  <th><center>14</center></th>
+                  <th><center>15</center></th>
+                  <th><center>16</center></th>
+                  <th><center>17</center></th>
+                  <th><center>18</center></th>
+                  <th><center>19</center></th>
+                  <th><center>20</center></th>
+                  <th><center>21</center></th>
+                  <th><center>22</center></th>
+                  <th><center>23</center></th>
+                  <th><center>24</center></th>
+                  <th><center>25</center></th>
+                  <th><center>26</center></th>
+                  <th><center>27</center></th>
+                  <th><center>28</center></th>
+                  <th><center>29</center></th>
+                  <th><center>30</center></th>
+                  <th><center>30</center></th>
+                  <th><center>31</center></th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th >Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Age</th>
+                  <th>Start date</th>
+
+                </tr>
+              </tfoot>
+              <tbody>
+                 {% include 'securite/includes/partial_calendar_list.html' %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="modal fade" id="modal-notification">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% endblock %}

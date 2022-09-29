@@ -1,0 +1,33 @@
+{% load static %}
+{% for subscriber in subscriber %}
+
+  <tr>
+
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm"><center>{{ subscriber.user }}</center></span>
+        </div>
+      </div>
+    </td>
+
+    <td scope="row">
+      <div class="media align-items-center">
+        <div class="media-body">
+          <span class="mb-0 text-sm"><center>{{ subscriber.SubscriberID }}</center></span>
+        </div>
+      </div>
+    </td>
+
+    <td class="text-right">
+
+
+  <button type="button" class=" btn btn-outline-danger js-delete-subscriber" data-url="{% url 'securite:subscriber_delete' subscriber.id %}">Delete</button>
+   </td>
+
+  </tr>
+{% empty %}
+  <tr>
+    <td colspan="10" class="text-center ">No subscriber</td>
+  </tr>
+{% endfor %}

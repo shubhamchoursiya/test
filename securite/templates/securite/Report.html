@@ -1,0 +1,65 @@
+
+  {% extends 'base.html'%}
+  {% load static %}
+
+  {% block javascript %}
+    <script src="{% static 'member/js/notification.js' %}"></script>
+
+  {% endblock %}
+
+  {% block content %}
+  {% if user.is_authenticated %}
+
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+            <!-- Card header -->
+            <div class="card-header">
+              <h3 class="mb-0">Employee Reports</h3>
+
+            </div>
+            <div class="table-responsive py-4">
+              <table class="table table-flush" id="datatable-buttons">
+                <thead class="thead-light">
+                  <tr>
+                    <th><center>ID</center></th>
+                    <th><center>Name</center></th>
+                    <th><center>Email</center></th>
+                    <th><center>deparmet</center></th>
+                    <th><center>Phone</center></th>
+                    <th><center>Details</center></th>
+
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>deparmet</th>
+                    <th>Phone</th>
+                    <th>Details</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+               {% include 'securite/includes/partial_report_list.html' %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modal-notification">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+        </div>
+      </div>
+    </div>
+
+
+  {% endif %}
+  {% endblock %}
